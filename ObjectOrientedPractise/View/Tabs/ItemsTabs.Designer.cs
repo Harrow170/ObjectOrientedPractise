@@ -43,6 +43,8 @@
             costField = new TextBox();
             IDfield = new TextBox();
             label1 = new Label();
+            label5 = new Label();
+            comboBoxCategories = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -96,22 +98,22 @@
             tableLayoutPanel1.Size = new Size(223, 67);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // button1
+            // Add
             // 
             Add.Dock = DockStyle.Fill;
             Add.Location = new Point(3, 3);
-            Add.Name = "button1";
+            Add.Name = "Add";
             Add.Size = new Size(105, 61);
             Add.TabIndex = 0;
             Add.Text = "Add";
             Add.UseVisualStyleBackColor = true;
             Add.Click += Add_Click;
             // 
-            // button2
+            // Remove
             // 
             Remove.Dock = DockStyle.Fill;
             Remove.Location = new Point(114, 3);
-            Remove.Name = "button2";
+            Remove.Name = "Remove";
             Remove.Size = new Size(106, 61);
             Remove.TabIndex = 1;
             Remove.Text = "Remove";
@@ -128,6 +130,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(comboBoxCategories);
+            groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(descriptionField);
             groupBox2.Controls.Add(nameField);
@@ -147,7 +151,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 329);
+            label4.Location = new Point(6, 370);
             label4.Name = "label4";
             label4.Size = new Size(88, 20);
             label4.TabIndex = 7;
@@ -155,7 +159,7 @@
             // 
             // descriptionField
             // 
-            descriptionField.Location = new Point(6, 352);
+            descriptionField.Location = new Point(6, 393);
             descriptionField.Multiline = true;
             descriptionField.Name = "descriptionField";
             descriptionField.Size = new Size(444, 220);
@@ -163,7 +167,7 @@
             // 
             // nameField
             // 
-            nameField.Location = new Point(6, 166);
+            nameField.Location = new Point(2, 217);
             nameField.Multiline = true;
             nameField.Name = "nameField";
             nameField.Size = new Size(444, 150);
@@ -172,7 +176,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(6, 143);
+            label3.Location = new Point(6, 194);
             label3.Name = "label3";
             label3.Size = new Size(52, 20);
             label3.TabIndex = 4;
@@ -210,6 +214,23 @@
             label1.TabIndex = 0;
             label1.Text = "ID:";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 137);
+            label5.Name = "label5";
+            label5.Size = new Size(50, 20);
+            label5.TabIndex = 8;
+            label5.Text = "Category:";
+            // 
+            // comboBox1
+            // 
+            comboBoxCategories.FormattingEnabled = true;
+            comboBoxCategories.Location = new Point(77, 134);
+            comboBoxCategories.Name = "comboBox1";
+            comboBoxCategories.Size = new Size(151, 28);
+            comboBoxCategories.TabIndex = 9;
+            // 
             // ItemsTabs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -245,5 +266,7 @@
         private TextBox costField;
         private TextBox IDfield;
         private Label label1;
+        private ComboBox comboBoxCategories;
+        private Label label5;
     }
 }

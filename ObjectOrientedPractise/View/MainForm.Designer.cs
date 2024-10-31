@@ -86,7 +86,6 @@
             customersTab1.Name = "customersTab1";
             customersTab1.Size = new Size(903, 717);
             customersTab1.TabIndex = 0;
-            //customersTab1.Load += this.customersTab1_Load;
             // 
             // MainForm
             // 

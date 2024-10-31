@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractise.View.Tabs
 {
@@ -18,18 +19,47 @@ namespace ObjectOrientedPractise.View.Tabs
     {
         private List<Item> _items = new List<Item>();
 
+        private Item _currentItem;
+
+        private List<string> ItemsListBoxItems = new List<string>();
+
         public ItemsTabs()
         {
             InitializeComponent();
             IDfield.ReadOnly = true;
+            comboBoxCategories.DataSource = Enum.GetValues(typeof(Category));
+            comboBoxCategories.SelectedIndex = -1;
+
+            nameField.Leave += nameField_Leave;
+            descriptionField.Leave += descriptionField_Leave;
+            costField.Leave += costField_Leave;
+            ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIdexChanged;
+            comboBoxCategories.SelectedIndexChanged += comboBoxCategories_SelectedIndexChanged;
         }
+
+        /*public List<Item> Item
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+            }
+        }*/
+
+        /*private void ItemsListBox_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }*/
 
         private void Add_Click(object sender, EventArgs e)
         {
             string name = nameField.Text;
             string info = descriptionField.Text;
-            double cost = double.Parse(costField.Text);
-            Item newItem = new Item(name, info, cost);
+            Category category = (Category)comboBoxCategories.SelectedItem;
+            Item newItem = new Item(name, info, double.Parse(costField.Text), category);
             _items.Add(newItem);
             UpdateListBox();
             ClearFields();
@@ -57,6 +87,7 @@ namespace ObjectOrientedPractise.View.Tabs
                 nameField.Text = selectedItem.Name;
                 descriptionField.Text = selectedItem.Info;
                 costField.Text = selectedItem.Cost.ToString();
+                comboBoxCategories.SelectedItem = selectedItem.Category;
             }
         }
 
@@ -73,6 +104,7 @@ namespace ObjectOrientedPractise.View.Tabs
             nameField.Clear();
             descriptionField.Clear();
             costField.Clear();
+            comboBoxCategories.SelectedIndex = -1;
         }
 
         private void nameField_Leave(object sender, EventArgs e)
@@ -90,11 +122,14 @@ namespace ObjectOrientedPractise.View.Tabs
             ValidateCost();
         }
 
+        /// <summary>
+        /// Проверяет корректность введенного имени товара.
+        /// </summary>
         private void ValidateName()
         {
             try
             {
-                ValueValidator.AssertStringOnLength(nameField.Text, 200, nameof(nameField));
+                ValueValidator.AssertStringOnLength(nameField.Text, 200, "Name");
                 nameField.BackColor = System.Drawing.Color.White;
             }
             catch (ArgumentException ex)
@@ -104,11 +139,14 @@ namespace ObjectOrientedPractise.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Проверяет корректность введенной информации о товаре(описании).
+        /// </summary>
         private void ValidateInfo()
         {
             try
             {
-                ValueValidator.AssertStringOnLength(descriptionField.Text, 1000, nameof(descriptionField));
+                ValueValidator.AssertStringOnLength(descriptionField.Text, 1000, "Description");
                 descriptionField.BackColor = System.Drawing.Color.White;
             }
             catch (ArgumentException ex)
@@ -118,27 +156,46 @@ namespace ObjectOrientedPractise.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Проверяет корректность введенной стоимости товара.
+        /// </summary>
         private void ValidateCost()
         {
-            try
+           if (double.TryParse(costField.Text, out double costValue))
             {
-                double costValue;
-                if (!double.TryParse(costField.Text, out costValue) || !IsCostValid(costValue))
+                try
                 {
-                    throw new ArgumentException("Стоимость должна быть больше 0 и меньше 100000.");
+                    ValueValidator.AssertNumberOnValue(costValue, 0, 100000, "Cost");
+                    costField.BackColor = System.Drawing.Color.White;
                 }
-                costField.BackColor = System.Drawing.Color.White;
+                catch (ArgumentException ex)
+                {
+                    costField.BackColor= System.Drawing.Color.Red;
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (ArgumentException ex)
+           else
             {
                 costField.BackColor = System.Drawing.Color.Red;
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Пожалуйста, введите корректное числовое значение для стоимости.");
             }
         }
 
-        private bool IsCostValid(double value)
+        private void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            return value > 0.0 && value < 100000;
+            if (ItemsListBox.SelectedItem is Item selectedItem && comboBoxCategories.SelectedItem is Category selectedCategory)
+            {
+                selectedItem.Category = selectedCategory;
+            }
+        }
+
+        private void ItemsListBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ItemsListBox.IndexFromPoint(e.Location) == -1)
+            {
+                ItemsListBox.ClearSelected();
+                ItemsListBox.SelectedIndex = -1;
+            }
         }
     }
 }

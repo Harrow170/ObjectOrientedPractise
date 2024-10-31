@@ -1,5 +1,7 @@
 ﻿//using ObjectOrientedPractise.Services;
 
+using System.ComponentModel;
+
 /// <summary>
 /// Хранит данные о товаре.
 /// </summary>
@@ -24,6 +26,11 @@ class Item
     /// Стоимость товара.
     /// </summary>
     private double _cost;
+
+    /// <summary>
+    /// Категория товара.
+    /// </summary>
+    public Category Category { get; set; }
 
     /// <summary>
     /// Возвращает отображение товара в меню.
@@ -121,7 +128,8 @@ class Item
     ///букв.</param>
     /// <param name="cost">Стоимость. Должна быть вещественным числом.
     /// </param>
-    public Item(string name, string info, double cost)
+    /// <param name ="category"> Rатегория. Является перечислением Category. </param>
+    public Item(string name, string info, double cost, Category category)
     {
         _id = IdGenerator.GetNextId();
 
@@ -130,6 +138,8 @@ class Item
         Info = info;
 
         Cost = cost;
+
+        Category = category;
     }
 
     public Item()
