@@ -127,6 +127,7 @@
             ItemsListBox.Name = "ItemsListBox";
             ItemsListBox.Size = new Size(220, 624);
             ItemsListBox.TabIndex = 0;
+            ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIdexChanged;
             // 
             // groupBox2
             // 

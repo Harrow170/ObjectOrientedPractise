@@ -86,6 +86,7 @@
             CustomersListBox.Name = "CustomersListBox";
             CustomersListBox.Size = new Size(239, 604);
             CustomersListBox.TabIndex = 1;
+            CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
             // 
             // tableLayoutPanel1
             // 

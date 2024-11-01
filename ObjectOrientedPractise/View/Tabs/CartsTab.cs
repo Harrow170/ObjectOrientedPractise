@@ -193,7 +193,7 @@ namespace ObjectOrientedPractise.View.Tabs
             {
                 UpdateAmount();
                 return;
-            };
+            }
             CartItemsListBox.Items.AddRange(CurrentCustomer.Cart.Items.ToArray());
             UpdateAmount();
         }

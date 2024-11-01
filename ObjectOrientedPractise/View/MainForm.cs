@@ -1,4 +1,6 @@
 using System.Security.Cryptography.Xml;
+using ObjectOrientedPractise.View.Tabs;
+using ObjectOrientedPractise.Model;
 
 namespace ObjectOrientedPractise
 {
@@ -18,11 +20,6 @@ namespace ObjectOrientedPractise
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             CartsTab.RefreshData();
-        }
-
-        public void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

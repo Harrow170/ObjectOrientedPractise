@@ -136,6 +136,7 @@
             CustomerComboBox.Name = "CustomerComboBox";
             CustomerComboBox.Size = new Size(397, 28);
             CustomerComboBox.TabIndex = 4;
+            CustomerComboBox.SelectedIndexChanged += CustomerComboBox_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -174,26 +175,6 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-        }
-
-        private void ClearCart_Click1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void RemoveItem_Click1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void CreateOrder_Click1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AddToCart_Click1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
