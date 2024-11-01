@@ -37,7 +37,7 @@ namespace ObjectOrientedPractise.View.Tabs
             comboBoxCategories.SelectedIndexChanged += comboBoxCategories_SelectedIndexChanged;
         }
 
-        public List<Item> Item
+        public List<Item> Items
         {
             get
             {
@@ -45,7 +45,12 @@ namespace ObjectOrientedPractise.View.Tabs
             }
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
                 _items = value;
+                ItemsListBox.Items.AddRange(value.ToArray());
             }
         }
 

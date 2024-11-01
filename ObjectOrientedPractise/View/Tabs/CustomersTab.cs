@@ -40,7 +40,7 @@ namespace ObjectOrientedPractise.View.Tabs
         /// При установке значения добавляет клиентов в ListBox.
         /// </summary>
         /// <value>Список объектов <see cref="Customer"/>, представляющий клиентов.</value>
-        public List<Customer> Customer
+        public List<Customer> Customers
         {
             get
             {
@@ -48,8 +48,12 @@ namespace ObjectOrientedPractise.View.Tabs
             }
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
                 _customers = value;
-
+                CustomersListBox.Items.AddRange(value.ToArray());
             }
         }
 
@@ -71,7 +75,7 @@ namespace ObjectOrientedPractise.View.Tabs
             NewCustomer.FullName = FullNameTextBox.Text;
             NewCustomer.Address = addressControl1.Givevalues();
 
-            Customer.Add(NewCustomer);
+            Customers.Add(NewCustomer);
             CustomersListBoxItems.Add($"ID: {NewCustomer.Id}, Name: {NewCustomer.FullName}");
             CustomersListBox.Items.Add(CustomersListBoxItems[CustomersListBoxItems.Count - 1]);
 
@@ -115,7 +119,7 @@ namespace ObjectOrientedPractise.View.Tabs
                 Add.Enabled = false;
                 int selectedIndex = CustomersListBox.SelectedIndex;
                 if (selectedIndex == -1) return;
-                _currentCustomer = Customer[selectedIndex];
+                _currentCustomer = Customers[selectedIndex];
                 IdTextBox.Text = _currentCustomer.Id.ToString();
                 FullNameTextBox.Text = _currentCustomer.FullName;
 
