@@ -1,5 +1,7 @@
 ﻿//using ObjectOrientedPractise.Services;
 
+using ObjectOrientedPractise.Model;
+
 /// <summary>
 /// Хранит данные о покупателях.
 /// </summary>
@@ -19,6 +21,16 @@ public class Customer
     /// Уникальное поле с адресом доставки для покупателя.
     /// </summary>
     public Address Address { get; set;}
+
+    /// <summary>
+    /// Уникальное поле с корзиной доставки для покупателя.
+    /// </summary>
+    public Cart Cart { get; set;}
+
+    /// <summary>
+    /// Список заказов.
+    /// </summary>
+    public List<Order> _orders;
 
     /// <summary>
     /// Возвращает и задает полное имя покупателя.
@@ -48,6 +60,21 @@ public class Customer
     }
 
     /// <summary>
+    /// Возвращает или меняет список заказов.
+    /// </summary>
+    public List<Order> Orders
+    {
+        get
+        {
+            return _orders;
+        }
+        set
+        {
+            _orders = value;
+        }
+    }
+
+    /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>.
     /// </summary>
     /// <param name="fullName">Полное имя покупателя. Должно состоять только из
@@ -59,6 +86,8 @@ public class Customer
         _id = IdGenerator.GetNextId();
         FullName = fullname;
         Address = new Address();
+        Cart = new Cart();
+        Orders = new List<Order>();
     }
 
     /// <summary>
@@ -69,5 +98,7 @@ public class Customer
         _id = IdGenerator.GetNextId();
         FullName = string.Empty;
         Address = new Address();
+        Cart = new Cart();
+        Orders = new List<Order>();
     }
 }
