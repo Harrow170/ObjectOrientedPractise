@@ -37,7 +37,7 @@ namespace ObjectOrientedPractise.View.Tabs
             comboBoxCategories.SelectedIndexChanged += comboBoxCategories_SelectedIndexChanged;
         }
 
-        /*public List<Item> Item
+        public List<Item> Item
         {
             get
             {
@@ -47,12 +47,7 @@ namespace ObjectOrientedPractise.View.Tabs
             {
                 _items = value;
             }
-        }*/
-
-        /*private void ItemsListBox_SelectedIndexChanged(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }*/
+        }
 
         private void Add_Click(object sender, EventArgs e)
         {

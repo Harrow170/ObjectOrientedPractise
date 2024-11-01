@@ -3,7 +3,7 @@
 /// <summary>
 /// Хранит данные о покупателях.
 /// </summary>
-class Customer
+public class Customer
 {
     /// <summary>
     /// Уникальный идентификвтор для всех объектов данного класса

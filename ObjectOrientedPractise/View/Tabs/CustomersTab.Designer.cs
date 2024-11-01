@@ -84,7 +84,7 @@
             CustomersListBox.FormattingEnabled = true;
             CustomersListBox.Location = new Point(6, 26);
             CustomersListBox.Name = "CustomersListBox";
-            CustomersListBox.Size = new Size(239, 624);
+            CustomersListBox.Size = new Size(239, 604);
             CustomersListBox.TabIndex = 1;
             // 
             // tableLayoutPanel1
