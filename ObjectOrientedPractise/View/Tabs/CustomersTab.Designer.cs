@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Address address1 = new Address();
             splitContainer1 = new SplitContainer();
             groupBox1 = new GroupBox();
             CustomersListBox = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            button1 = new Button();
-            button2 = new Button();
+            Add = new Button();
+            Remove = new Button();
             groupBox2 = new GroupBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            label3 = new Label();
+            addressControl1 = new Controls.AddressControl();
+            FullNameTextBox = new TextBox();
+            IdTextBox = new TextBox();
             label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -63,8 +63,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(groupBox2);
-            splitContainer1.Size = new Size(755, 776);
-            splitContainer1.SplitterDistance = 251;
+            splitContainer1.Size = new Size(818, 776);
+            splitContainer1.SplitterDistance = 271;
             splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -74,7 +74,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(251, 776);
+            groupBox1.Size = new Size(271, 776);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Customers";
@@ -84,7 +84,7 @@
             CustomersListBox.FormattingEnabled = true;
             CustomersListBox.Location = new Point(6, 26);
             CustomersListBox.Name = "CustomersListBox";
-            CustomersListBox.Size = new Size(239, 664);
+            CustomersListBox.Size = new Size(239, 624);
             CustomersListBox.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -92,82 +92,80 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(button1, 0, 0);
-            tableLayoutPanel1.Controls.Add(button2, 1, 0);
+            tableLayoutPanel1.Controls.Add(Add, 0, 0);
+            tableLayoutPanel1.Controls.Add(Remove, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
             tableLayoutPanel1.Location = new Point(3, 697);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(245, 76);
+            tableLayoutPanel1.Size = new Size(265, 76);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // Add
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 70);
-            button1.TabIndex = 0;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
+            Add.Dock = DockStyle.Fill;
+            Add.Location = new Point(3, 3);
+            Add.Name = "Add";
+            Add.Size = new Size(126, 70);
+            Add.TabIndex = 0;
+            Add.Text = "Add";
+            Add.UseVisualStyleBackColor = true;
+            Add.Click += Add_Click;
             // 
-            // button2
+            // Remove
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(125, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(117, 70);
-            button2.TabIndex = 1;
-            button2.Text = "Remove";
-            button2.UseVisualStyleBackColor = true;
+            Remove.Dock = DockStyle.Fill;
+            Remove.Location = new Point(135, 3);
+            Remove.Name = "Remove";
+            Remove.Size = new Size(127, 70);
+            Remove.TabIndex = 1;
+            Remove.Text = "Remove";
+            Remove.UseVisualStyleBackColor = true;
+            Remove.Click += Remove_Click;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
-            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(addressControl1);
+            groupBox2.Controls.Add(FullNameTextBox);
+            groupBox2.Controls.Add(IdTextBox);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(500, 776);
+            groupBox2.Size = new Size(543, 776);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Selected_Customer";
             // 
-            // textBox3
+            // addressControl1
             // 
-            textBox3.Location = new Point(101, 150);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(382, 241);
-            textBox3.TabIndex = 5;
+            address1.Apartment = " ";
+            address1.Building = " ";
+            address1.City = " ";
+            address1.Country = " ";
+            address1.Index = 100000;
+            address1.Street = " ";
+            addressControl1.Address = address1;
+            addressControl1.Location = new Point(-4, 157);
+            addressControl1.Name = "addressControl1";
+            addressControl1.Size = new Size(676, 292);
+            addressControl1.TabIndex = 5;
             // 
-            // textBox2
+            // FullNameTextBox
             // 
-            textBox2.Location = new Point(101, 94);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(393, 27);
-            textBox2.TabIndex = 4;
+            FullNameTextBox.Location = new Point(101, 94);
+            FullNameTextBox.Name = "FullNameTextBox";
+            FullNameTextBox.Size = new Size(393, 27);
+            FullNameTextBox.TabIndex = 4;
             // 
-            // textBox1
+            // IdTextBox
             // 
-            textBox1.Location = new Point(101, 33);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(127, 27);
-            textBox1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 153);
-            label3.Name = "label3";
-            label3.Size = new Size(65, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Address:";
+            IdTextBox.Location = new Point(101, 33);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(127, 27);
+            IdTextBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -193,7 +191,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(splitContainer1);
             Name = "CustomersTab";
-            Size = new Size(755, 776);
+            Size = new Size(818, 776);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -211,14 +209,13 @@
         private GroupBox groupBox1;
         private ListBox CustomersListBox;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button button1;
-        private Button button2;
+        private Button Add;
+        private Button Remove;
         private GroupBox groupBox2;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Label label3;
+        private TextBox FullNameTextBox;
+        private TextBox IdTextBox;
         private Label label2;
         private Label label1;
+        private Controls.AddressControl addressControl1;
     }
 }
