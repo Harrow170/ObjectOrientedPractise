@@ -168,16 +168,17 @@ namespace ObjectOrientedPractise.View.Tabs
         /// </summary>
         private void CreateOrder_Click(Object sender, EventArgs e)
         {
-            if (CurrentCustomer == null)
+            if (ItemsListBox.SelectedItem == null || CustomerComboBox.SelectedItem == null)
             {
+                MessageBox.Show(
+                    "In order to add something to cart choose an item or a customer",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
                 return;
             }
-            if (CurrentCustomer.Cart.Items.Count < 1)
-            {
-                return;
-            }
-            Order order = new(Guid.NewGuid(), new Dictionary<DateTime, OrderStatus>(), OrderStatus.New, CurrentCustomer.Address, CurrentCustomer.Cart.Items);
-            CurrentCustomer.Orders.Add(order);
+            CurrentCustomer.Cart.Items.Add(Items[ItemsListBox.SelectedIndex]);
             ClearCart();
             UpdateAmount();
         }

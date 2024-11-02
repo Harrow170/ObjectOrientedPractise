@@ -47,6 +47,8 @@ namespace ObjectOrientedPractise.View.Controls
             }
         }
 
+
+
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="AddressControl"/>
         /// и устанавливает начальное значение для <see cref="Address"/>.
@@ -55,6 +57,18 @@ namespace ObjectOrientedPractise.View.Controls
         {
             InitializeComponent();
             Address = new Address();
+        }
+        /// <summary>
+        /// Updates information in TextBoxes.
+        /// </summary>
+        public void SelelctedTextBoxs()
+        {
+            postIndextextBox.Text = Address.Index.ToString();
+            countryTextBox.Text = Address.Country.ToString();
+            cityTextBox.Text = Address.City.ToString();
+            streetTextBox.Text = Address.Street.ToString();
+            buildingTextBox.Text = Address.Building.ToString();
+            apartmentTextBox.Text = Address.Apartment.ToString();
         }
 
         private void postIndextextBox_TextChanged(object sender, EventArgs e)
